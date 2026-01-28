@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata Kelola COBIT 5 dan Keamanan Sistem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #00112c 0%, #0abf53 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 17, 44, 0.8), rgba(10, 191, 83, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><rect fill="%230abf53" width="1000" height="300"/><path fill="%2300112c" d="M0,150 Q250,50 500,150 T1000,150 L1000,300 L0,300 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 50px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00112c 0%, #0abf53 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+        }
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            color: #00112c;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #00112c 0%, #0abf53 100%);
+            border-radius: 2px;
+        }
+        .footer {
+            background: linear-gradient(90deg, #00112c 0%, #0abf53 100%);
+            color: white;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffd700 !important;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #00112c 0%, #0abf53 100%);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #0abf53 0%, #00112c 100%);
+            transform: scale(1.05);
+        }
+        .stats-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-left: 5px solid #00112c;
+        }
+        .question-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-left: 5px solid #0abf53;
+        }
+        .star-rating {
+            direction: rtl;
+            text-align: center;
+        }
+        .star-rating .star {
+            font-size: 24px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+            margin: 0 2px;
+            display: inline-block;
+        }
+        .star-rating .star:hover,
+        .star-rating .star.active {
+            color: #ffc107;
+        }
+        .star-rating .star.selected {
+            color: #ff9800;
+        }
+        .progress-bar {
+            min-width: 2em;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="fas fa-shield-alt me-2"></i>COBIT 5 & Security
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cobit"><i class="fas fa-cogs me-1"></i> COBIT 5</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#security"><i class="fas fa-lock me-1"></i> Keamanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#questions"><i class="fas fa-question-circle me-1"></i> Pertanyaan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope me-1"></i> Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Tata Kelola Teknologi Informasi dengan COBIT 5</h1>
+            <p class="lead mb-4">Platform komprehensif untuk memahami dan menerapkan kerangka kerja COBIT 5 dalam pengelolaan keamanan sistem TI</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#cobit" class="btn btn-primary btn-lg"><i class="fas fa-book me-2"></i> Pelajari COBIT 5</a>
+                <a href="#security" class="btn btn-outline-light btn-lg"><i class="fas fa-shield-alt me-2"></i> Keamanan Sistem</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Stats Section -->
+        <section class="mb-5">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="card stats-card p-4">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-primary">5 Domain</h3>
+                        <p class="text-muted">Domain utama COBIT 5</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card stats-card p-4">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="text-primary">37 Proses</h3>
+                        <p class="text-muted">Proses manajemen dalam COBIT 5</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card stats-card p-4">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h3 class="text-success">100+</h3>
+                        <p class="text-muted">Pertanyaan Keamanan</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card stats-card p-4">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-success">Best Practice</h3>
+                        <p class="text-muted">Praktik Terbaik</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COBIT 5 Section -->
+        <section id="cobit" class="mb-5">
+            <h2 class="section-title text-center">Kerangka Kerja COBIT 5</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card p-4">
+                        <h3><i class="fas fa-info-circle text-success me-2"></i> Apa itu COBIT 5?</h3>
+                        <p>COBIT 5 (Control Objectives for Information and Related Technologies) adalah kerangka kerja tata kelola teknologi informasi yang dikembangkan oleh ISACA. COBIT 5 membantu organisasi menciptakan nilai dari TI dengan memberikan pendekatan holistik untuk tata kelola dan manajemen TI.</p>
+
+                        <h4 class="mt-4"><i class="fas fa-list text-success me-2"></i> Lima Prinsip Utama COBIT 5:</h4>
+                        <ol>
+                            <li><strong>Memenuhi kebutuhan stakeholder</strong> - Menyelaraskan tujuan TI dengan kebutuhan bisnis</li>
+                            <li><strong>Cakupan organisasi secara menyeluruh</strong> - Mencakup semua fungsi TI dalam organisasi</li>
+                            <li><strong>Menggunakan pendekatan single integrated framework</strong> - Mengintegrasikan berbagai kerangka kerja</li>
+                            <li><strong>Memungkinkan pendekatan berbasis proses</strong> - Fokus pada proses sebagai unit dasar</li>
+                            <li><strong>Memfasilitasi pendekatan berkelanjutan untuk peningkatan</strong> - Mendorong peningkatan berkelanjutan</li>
+                        </ol>
+                        
+                        <h4 class="mt-4"><i class="fas fa-sitemap text-success me-2"></i> Lima Domain Proses COBIT 5:</h4>
+                        <div class="row mt-3">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-flag text-success me-2"></i> EDM - Evaluate, Direct and Monitor</h5>
+                                        <p>Menyediakan tata kelola TI di tingkat organisasi</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-align-left text-warning me-2"></i> APO - Align, Plan and Organize</h5>
+                                        <p>Mengelola strategi dan arsitektur TI</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-cog text-info me-2"></i> BAI - Build, Acquire and Implement</h5>
+                                        <p>Mengelola pengembangan dan akuisisi solusi TI</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-play-circle text-danger me-2"></i> DSS - Deliver, Service and Support</h5>
+                                        <p>Menyediakan layanan TI yang efektif</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-bolt text-secondary me-2"></i> MEA - Monitor, Evaluate and Assess</h5>
+                                        <p>Memastikan kinerja TI sesuai harapan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section id="security" class="mb-5">
+            <h2 class="section-title text-center">Keamanan Sistem dalam COBIT 5</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card p-4">
+                        <h3><i class="fas fa-shield-alt text-success me-2"></i> Integrasi Keamanan dalam COBIT 5</h3>
+                        <p>Keamanan sistem merupakan aspek penting dalam tata kelola TI. COBIT 5 menyediakan panduan untuk mengintegrasikan keamanan dalam seluruh siklus hidup TI, mulai dari perencanaan hingga operasi sehari-hari.</p>
+
+                        <h4 class="mt-4"><i class="fas fa-key text-success me-2"></i> Aspek Keamanan Utama:</h4>
+                        <div class="row mt-3">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-user-lock text-success me-2"></i> Identitas dan Akses</h5>
+                                        <p>Pengelolaan identitas dan kontrol akses pengguna</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-database text-warning me-2"></i> Perlindungan Data</h5>
+                                        <p>Kerahasiaan, integritas, dan ketersediaan data</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-network-wired text-info me-2"></i> Infrastruktur Jaringan</h5>
+                                        <p>Keamanan jaringan dan komunikasi</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5><i class="fas fa-bug text-danger me-2"></i> Pengujian Keamanan</h5>
+                                        <p>Penilaian dan pengujian keamanan sistem</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h4 class="mt-4"><i class="fas fa-check-circle text-primary me-2"></i> Proses COBIT 5 Terkait Keamanan:</h4>
+                        <ul class="mt-3">
+                            <li><strong>APO13 - Manage Security</strong>: Mengelola kebijakan dan praktik keamanan TI</li>
+                            <li><strong>DSS05 - Manage Securely</strong>: Menyediakan lingkungan operasional yang aman</li>
+                            <li><strong>DSS06 - Manage Business Process Controls</strong>: Mengelola kontrol proses bisnis</li>
+                            <li><strong>MEA02 - Monitor Agreement Compliance</strong>: Memantau kepatuhan terhadap kesepakatan keamanan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Questions Section -->
+        <section id="questions" class="mb-5">
+            <h2 class="section-title text-center">Pertanyaan Keamanan Sistem</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4">
+                        <h3><i class="fas fa-question-circle text-success me-2"></i> Contoh Pertanyaan Evaluasi Keamanan</h3>
+                        <p>Berikut adalah beberapa contoh pertanyaan yang dapat digunakan untuk mengevaluasi keamanan sistem berdasarkan prinsip COBIT 5:</p>
+                        
+                        <div class="accordion mt-4" id="securityQuestions">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#question1">
+                                        <i class="fas fa-lock me-2"></i> Kebijakan dan Prosedur Keamanan
+                                    </button>
+                                </h2>
+                                <div id="question1" class="accordion-collapse collapse show" data-bs-parent="#securityQuestions">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush" id="policyQuestions">
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Apakah organisasi memiliki kebijakan keamanan TI yang komprehensif?</div>
+                                                    <small class="text-muted">Domain: APO13 - Manage Security</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q1">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Bagaimana organisasi memastikan kebijakan keamanan diperbarui secara berkala?</div>
+                                                    <small class="text-muted">Domain: MEA02 - Monitor Agreement Compliance</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q2">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Apakah ada prosedur untuk menangani pelanggaran keamanan?</div>
+                                                    <small class="text-muted">Domain: DSS05 - Manage Securely</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q3">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question2">
+                                        <i class="fas fa-user-shield me-2"></i> Manajemen Identitas dan Akses
+                                    </button>
+                                </h2>
+                                <div id="question2" class="accordion-collapse collapse" data-bs-parent="#securityQuestions">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush" id="accessQuestions">
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Bagaimana organisasi mengelola pemberian hak akses pengguna baru?</div>
+                                                    <small class="text-muted">Domain: DSS05 - Manage Securely</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q4">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Apakah dilakukan peninjauan berkala terhadap hak akses pengguna?</div>
+                                                    <small class="text-muted">Domain: MEA02 - Monitor Agreement Compliance</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q5">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Bagaimana cara organisasi menangani penghapusan akses saat karyawan resign?</div>
+                                                    <small class="text-muted">Domain: DSS05 - Manage Securely</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q6">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question3">
+                                        <i class="fas fa-database me-2"></i> Perlindungan Data
+                                    </button>
+                                </h2>
+                                <div id="question3" class="accordion-collapse collapse" data-bs-parent="#securityQuestions">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush" id="dataQuestions">
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Apakah data sensitif dienkripsi saat disimpan dan ditransmisikan?</div>
+                                                    <small class="text-muted">Domain: APO13 - Manage Security</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q7">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Bagaimana organisasi memastikan backup data dilakukan secara rutin?</div>
+                                                    <small class="text-muted">Domain: DSS05 - Manage Securely</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q8">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Apakah ada kontrol akses terhadap data sensitif berdasarkan peran?</div>
+                                                    <small class="text-muted">Domain: DSS05 - Manage Securely</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q9">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question4">
+                                        <i class="fas fa-network-wired me-2"></i> Keamanan Jaringan
+                                    </button>
+                                </h2>
+                                <div id="question4" class="accordion-collapse collapse" data-bs-parent="#securityQuestions">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush" id="networkQuestions">
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Apakah firewall dan IDS/IPS dikelola secara efektif?</div>
+                                                    <small class="text-muted">Domain: DSS05 - Manage Securely</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q10">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Bagaimana organisasi mengamankan koneksi remote ke jaringan internal?</div>
+                                                    <small class="text-muted">Domain: DSS05 - Manage Securely</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q11">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item question-card d-flex justify-content-between align-items-start">
+                                                <div class="ms-2 me-auto">
+                                                    <div class="fw-bold">Apakah dilakukan pemindaian kerentanan jaringan secara berkala?</div>
+                                                    <small class="text-muted">Domain: MEA02 - Monitor Agreement Compliance</small>
+                                                </div>
+                                                <div class="star-rating" data-question-id="q12">
+                                                    <i class="far fa-star star" data-value="1"></i>
+                                                    <i class="far fa-star star" data-value="2"></i>
+                                                    <i class="far fa-star star" data-value="3"></i>
+                                                    <i class="far fa-star star" data-value="4"></i>
+                                                    <i class="far fa-star star" data-value="5"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Summary Section -->
+                        <div class="mt-5">
+                            <h3><i class="fas fa-chart-bar text-success me-2"></i> Ringkasan Evaluasi</h3>
+                            <div class="card p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5>Total Skor: <span id="totalScore">0</span>/60</h5>
+                                    <h5>Nilai Rata-rata: <span id="averageScore">0</span></h5>
+                                </div>
+                                <div class="progress mb-3" style="height: 30px;">
+                                    <div id="scoreProgress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button class="btn btn-primary me-md-2" type="button" onclick="resetScores()">
+                                        <i class="fas fa-redo me-2"></i> Reset Nilai
+                                    </button>
+                                    <button class="btn btn-success" type="button" onclick="calculateScores()">
+                                        <i class="fas fa-calculator me-2"></i> Hitung Skor
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h5><i class="fas fa-shield-alt me-2"></i> Tata Kelola COBIT 5</h5>
+                    <p>Platform edukasi dan evaluasi untuk penerapan kerangka kerja COBIT 5 dalam tata kelola TI dan manajemen keamanan sistem.</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#cobit" class="text-white text-decoration-none">COBIT 5</a></li>
+                        <li><a href="#security" class="text-white text-decoration-none">Keamanan</a></li>
+                        <li><a href="#questions" class="text-white text-decoration-none">Pertanyaan</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Hubungi Kami</h5>
+                    <p><i class="fas fa-envelope me-2"></i> info@example.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +62 123 4567 890</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p>&copy; 2025 Tata Kelola COBIT 5. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple animation for cards on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+
+        // Star rating functionality
+        document.querySelectorAll('.star-rating .star').forEach(star => {
+            star.addEventListener('click', function() {
+                const ratingContainer = this.closest('.star-rating');
+                const stars = ratingContainer.querySelectorAll('.star');
+                const value = parseInt(this.getAttribute('data-value'));
+
+                // Reset all stars in this container
+                stars.forEach(s => s.classList.remove('selected', 'active'));
+
+                // Apply selected class to clicked star and all previous ones
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.add('selected');
+                }
+
+                // Store the selected value in the container
+                ratingContainer.setAttribute('data-selected-value', value);
+            });
+
+            star.addEventListener('mouseover', function() {
+                const ratingContainer = this.closest('.star-rating');
+                const stars = ratingContainer.querySelectorAll('.star');
+                const value = parseInt(this.getAttribute('data-value'));
+
+                // Reset hover effect
+                stars.forEach(s => s.classList.remove('active'));
+
+                // Apply hover effect to current star and all previous ones
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.add('active');
+                }
+            });
+        });
+
+        // Reset hover effect when mouse leaves the container
+        document.querySelectorAll('.star-rating').forEach(container => {
+            container.addEventListener('mouseleave', function() {
+                const stars = this.querySelectorAll('.star');
+                const selectedValue = parseInt(this.getAttribute('data-selected-value')) || 0;
+
+                // Reset all stars
+                stars.forEach(s => s.classList.remove('active'));
+
+                // Reapply selected stars if any were previously selected
+                for (let i = 0; i < selectedValue; i++) {
+                    stars[i].classList.add('selected');
+                }
+            });
+        });
+
+        // Calculate scores
+        function calculateScores() {
+            const allRatings = document.querySelectorAll('.star-rating[data-selected-value]');
+            let totalScore = 0;
+            let answeredCount = 0;
+
+            allRatings.forEach(rating => {
+                const value = parseInt(rating.getAttribute('data-selected-value'));
+                if (!isNaN(value)) {
+                    totalScore += value;
+                    answeredCount++;
+                }
+            });
+
+            const maxPossibleScore = 12 * 5; // 12 questions, max 5 points each
+            const averageScore = answeredCount > 0 ? (totalScore / answeredCount).toFixed(2) : 0;
+            const percentage = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
+
+            document.getElementById('totalScore').textContent = totalScore;
+            document.getElementById('averageScore').textContent = averageScore;
+            document.getElementById('scoreProgress').style.width = percentage + '%';
+            document.getElementById('scoreProgress').textContent = percentage + '%';
+
+            // Update progress bar color based on percentage
+            const progressBar = document.getElementById('scoreProgress');
+            if (percentage >= 80) {
+                progressBar.className = 'progress-bar bg-success';
+            } else if (percentage >= 60) {
+                progressBar.className = 'progress-bar bg-info';
+            } else if (percentage >= 40) {
+                progressBar.className = 'progress-bar bg-warning';
+            } else {
+                progressBar.className = 'progress-bar bg-danger';
+            }
+        }
+
+        // Reset all scores
+        function resetScores() {
+            document.querySelectorAll('.star-rating .star').forEach(star => {
+                star.classList.remove('selected', 'active');
+            });
+
+            document.querySelectorAll('.star-rating').forEach(container => {
+                container.removeAttribute('data-selected-value');
+            });
+
+            document.getElementById('totalScore').textContent = '0';
+            document.getElementById('averageScore').textContent = '0';
+            document.getElementById('scoreProgress').style.width = '0%';
+            document.getElementById('scoreProgress').textContent = '0%';
+            document.getElementById('scoreProgress').className = 'progress-bar';
+        }
+    </script>
+</body>
+</html>
